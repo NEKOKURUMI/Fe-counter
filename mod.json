@@ -1,0 +1,34 @@
+{
+    "geode": "3.0.0",
+    "version": "v1.0.0",
+    "id": "com.yourname.fecounter",
+    "name": "FE Counter",
+    "developer": "yourname",
+    "description": "Live FPS/Hz/frametime overlay plus attempt tracking by percent range, in the style of Mega Hack's FE Counter.",
+    "gd": {
+        "win": "2.2074",
+        "android": "2.2074",
+        "mac": "2.2074"
+    },
+    "early-load": true,
+    "settings": {
+        "show-fps": {
+            "name": "Show FPS/MS/Hz",
+            "description": "Toggle the frametime overlay",
+            "type": "bool",
+            "default": true
+        },
+        "show-buckets": {
+            "name": "Show Attempt Buckets",
+            "description": "Toggle the percent-range attempt tracker",
+            "type": "bool",
+            "default": true
+        },
+        "show-framecount": {
+            "name": "Show Frame Counter",
+            "description": "Live count of frames since the attempt started, resets on retry",
+            "type": "bool",
+            "default": true
+        }
+    }
+}
