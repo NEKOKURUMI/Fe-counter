@@ -1,14 +1,14 @@
 {
-    "geode": "3.0.0",
+    "geode": "4.0.0",
     "version": "v1.0.0",
     "id": "com.yourname.fecounter",
     "name": "FE Counter",
     "developer": "yourname",
     "description": "Live FPS/Hz/frametime overlay plus attempt tracking by percent range, in the style of Mega Hack's FE Counter.",
     "gd": {
-        "win": "2.2074",
-        "android": "2.2074",
-        "mac": "2.2074"
+        "win": "2.208",
+        "android": "2.208",
+        "mac": "2.208"
     },
     "early-load": true,
     "settings": {
