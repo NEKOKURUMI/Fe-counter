@@ -1,0 +1,59 @@
+name: Build Geode Mod
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: Android64
+            os: ubuntu-latest
+            target: Android64
+          - name: Android32
+            os: ubuntu-latest
+            target: Android32
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the mod
+        uses: geode-sdk/build-geode-mod@main
+        id: build
+        with:
+          sdk: stable
+          target: ${{ matrix.config.target }}
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FECounter-${{ matrix.config.name }}
+          path: ${{ steps.build.outputs.build-output }}
+
+  combine:
+    name: Combine into one .geode file
+    runs-on: ubuntu-latest
+    needs: ['build']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and combine
+        uses: geode-sdk/build-geode-mod@main
+        id: build
+        with:
+          sdk: stable
+          combine: true
+
+      - name: Upload combined .geode
+        uses: actions/upload-artifact@v4
+        with:
+          name: FECounter-combined
+          path: ${{ steps.build.outputs.build-output }}
